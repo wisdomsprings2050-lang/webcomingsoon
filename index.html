@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="WisdomSprings Hub - Excellent Learning, Research, Innovation & Solutions. Join us for transformative educational and research experiences launching soon.">
+    <meta name="keywords" content="learning platform, research hub, innovation solutions, educational excellence, wisdom springs">
+    <meta name="author" content="WisdomSprings Intellectual Hub Ltd.">
+    <meta name="theme-color" content="#001F5C">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="WisdomSprings Hub - Excellent Learning, Research, Innovation & Solutions">
+    <meta property="og:description" content="Transformative platform for excellent learning, cutting-edge research, and innovative solutions launching soon.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/whatsapp-20image-202025-12-22-20at-2018.jpeg">
+   
+    <title>WisdomSprings Hub - Learning, Research, Innovation & Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+        :root {
+            --navy: #001F5C;
+            --gold: #FCD34D;
+            --navy-light: #0A3A7F;
+            --gold-light: #FDE68A;
+            --text-dark: #1a1a1a;
+            --text-light: #f8f8f8;
+            --bg-light: #fafafa;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 0.8s ease-out 2.5s forwards;
+        }
+        .loader.hidden {
+            display: none;
+        }
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 31, 92, 0.1);
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .brand-info h1 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 0;
+        }
+        .brand-info p {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .header-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--text-light);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(252, 211, 77, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(252, 211, 77, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            animation: slideUp 0.9s ease-out;
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2.5rem;
+            background: white;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: pulse 2.5s ease-in-out infinite;
+            padding: 1rem;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .coming-soon-text {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        /* Countdown Timer */
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(252, 211, 77, 0.2);
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+        }
+        .countdown-item {
+            text-align: center;
+        }
+        .countdown-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            font-family: 'Poppins', sans-serif;
+        }
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 0.8rem;
+            opacity: 0.85;
+            font-weight: 600;
+        }
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy);
+            box-shadow: 0 10px 30px rgba(252, 211, 77, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(252, 211, 77, 0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--navy);
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Mission Section */
+        .mission {
+            background: var(--bg-light);
+        }
+        .mission-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .mission-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .mission-text h3 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+        .mission-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        .mission-list {
+            list-style: none;
+        }
+        .mission-list li {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .mission-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .mission-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 26, 77, 0.15);
+            height: 450px;
+        }
+        .mission-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Features Section */
+        .features {
+            background: white;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+        .feature-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 26, 77, 0.1);
+        }
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--gold);
+        }
+        .feature-card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        /* Subscribe Section */
+        .subscribe {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--text-light);
+        }
+        .subscribe-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .subscribe-title {
+            color: var(--text-light);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .subscribe-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--text-light);
+            padding: 4rem 2rem 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(252, 211, 77, 0.1);
+        }
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        .footer-section p {
+            color: rgba(248, 248, 248, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-links a {
+            color: rgba(248, 248, 248, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(252, 211, 77, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateY(-4px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            color: rgba(248, 248, 248, 0.7);
+            font-size: 0.9rem;
+        }
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+        .footer-bottom a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .coming-soon-text {
+                font-size: 2.5rem;
+            }
+            .tagline {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            section {
+                padding: 3rem 1.5rem;
+            }
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+            .countdown-value {
+                font-size: 2rem;
+            }
+            .mission-image {
+                height: 300px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <div style="color: var(--gold); font-size: 1.2rem; font-weight: 600;">Loading WisdomSprings Hub</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo-image">
+                    <img src="logo.png"
+                         alt="WisdomSprings Hub Logo">
+                </div>
+                <div class="brand-info">
+                    <h1>WisdomSprings Hub</h1>
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+            <div class="header-badge">Launch Ready</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="/images/whatsapp-20image-202025-12-22-20at-2018.jpeg"
+                     alt="WisdomSprings Hub">
+            </div>
+            <h1 class="coming-soon-text">Coming Soon</h1>
+           
+            <p class="tagline">
+                <strong>Excellent Learning, Research, Innovation & Solutions</strong><br>
+                Experience the next generation of educational excellence
+            </p>
+            <!-- Countdown Timer -->
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">30</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="document.getElementById('subscribe').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-bell"></i> Get Notified
+                </button>
+                <a href="#features" class="btn btn-secondary">
+                    <i class="fas fa-arrow-down"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Why Choose WisdomSprings Hub?</h2>
+            <p class="section-subtitle">Discover our commitment to excellence in education, research, and innovation</p>
+           
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>World-Class Learning</h3>
+                    <p>Access premium educational content and expert-led courses designed for modern learners seeking excellence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Advanced Research</h3>
+                    <p>Participate in cutting-edge research initiatives that push the boundaries of innovation and knowledge.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation Hub</h3>
+                    <p>Connect with brilliant minds and collaborate on breakthrough solutions for real-world challenges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Expert Community</h3>
+                    <p>Join a global network of educators, researchers, and innovators committed to excellence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Recognized Excellence</h3>
+                    <p>Earn certifications and credentials recognized by leading institutions worldwide.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Career Growth</h3>
+                    <p>Advance your career with skills and knowledge that employers value and society needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="mission-content">
+            <div class="mission-text">
+                <h3>Our Mission & Vision</h3>
+                <p>WisdomSprings Intellectual Hub Ltd. is dedicated to fostering excellent learning, conducting groundbreaking research, driving innovation, and delivering solutions that transform lives and communities.</p>
+               
+                <p>We believe in the power of knowledge to create positive change. Our platform brings together the brightest minds to collaborate, discover, and implement solutions that matter.</p>
+                <ul class="mission-list">
+                    <li>Excellence in every educational experience</li>
+                    <li>Cutting-edge research and development</li>
+                    <li>Practical innovation that drives impact</li>
+                    <li>Global community of lifelong learners</li>
+                    <li>Accessibility and inclusive learning</li>
+                </ul>
+            </div>
+            <div class="mission-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop"
+                     alt="Collaborative learning and research environment at WisdomSprings Hub">
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe" id="subscribe">
+        <div class="subscribe-content">
+            <h2 class="subscribe-title">Be First to Know</h2>
+            <p class="subscribe-text">Click the button below to send us an email and get exclusive launch updates and early-access offers.</p>
+           
+            <a href="mailto:info@wisdomspringshub.com?subject=Please%20notify%20me%20about%20WisdomSprings%20Hub%20launch&body=Hi%20team%2C%0D%0A%0D%0AI%20would%20like%20to%20be%20notified%20when%20WisdomSprings%20Hub%20launches.%20Please%20add%20me%20to%20your%20early%20notification%20list.%0D%0A%0D%0AThank%20you!" 
+               class="btn btn-primary" style="display: inline-block; margin-top: 1rem;">
+                <i class="fas fa-envelope"></i> Notify Me via Email
+            </a>
+           
+            <p style="font-size: 0.9rem; opacity: 0.85; margin-top: 1.5rem;">
+                We respect your privacy. You can unsubscribe anytime.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>WisdomSprings Hub is an intellectual hub dedicated to excellence in learning, research, innovation, and delivering transformative solutions.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com" class="social-link" aria-label="Follow us on Facebook" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com" class="social-link" aria-label="Follow us on Twitter" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com" class="social-link" aria-label="Connect on LinkedIn" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://instagram.com" class="social-link" aria-label="Follow us on Instagram" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#features">Why Choose Us</a></li>
+                    <li><a href="#mission">Our Mission</a></li>
+                    <li><a href="#subscribe">Subscribe</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <p>
+                    <strong>Email:</strong><br>
+                    <a href="mailto:info@wisdomspringshub.com">info@wisdomspringshub.com</a>
+                </p>
+                <p>
+                    <strong>Registration:</strong><br>
+                    RC: 7145140
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 WisdomSprings Intellectual Hub Ltd. All rights reserved.</p>
+            <p>Building the future of learning, research, and innovation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hide loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2500);
+        });
+
+        // Countdown Timer - 30 days from Dec 27, 2025 → Jan 26, 2026
+        function updateCountdown() {
+            const launchDate = new Date('2026-01-26T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
